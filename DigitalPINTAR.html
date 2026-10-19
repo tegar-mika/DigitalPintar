@@ -1,0 +1,1406 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="DigitalPintar menyediakan tutorial Excel, coding, dan produktivitas digital yang praktis untuk pemula.">
+  <meta name="theme-color" content="#2563eb">
+  <title>DigitalPintar — Belajar Skill Digital</title>
+
+  <style>
+    :root {
+      --blue: #2563eb;
+      --blue-dark: #1d4ed8;
+      --blue-light: #eff6ff;
+      --ink: #172033;
+      --muted: #64748b;
+      --line: #e5eaf2;
+      --surface: #ffffff;
+      --background: #f8faff;
+      --radius: 18px;
+      --shadow: 0 10px 35px rgba(30, 64, 175, .06);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--background);
+      line-height: 1.65;
+    }
+
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 850;
+      font-size: 21px;
+      letter-spacing: -.7px;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 13px;
+      color: white;
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      box-shadow: 0 6px 16px #2563eb35;
+      font-size: 19px;
+    }
+
+    .brand span:last-child span { color: var(--blue); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: #475569;
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    .nav-links a:hover { color: var(--blue); }
+
+    .nav-cta, .primary-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 17px;
+      color: white;
+      background: var(--blue);
+      border: 1px solid var(--blue);
+      border-radius: 11px;
+      font-weight: 700;
+      transition: .2s;
+    }
+
+    .nav-cta:hover, .primary-btn:hover {
+      background: var(--blue-dark);
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 78px 0 64px;
+      background:
+        radial-gradient(ellipse at 90% 10%, #bfdbfe80, transparent 38%),
+        linear-gradient(180deg, #eff6ff 0%, #f8faff 100%);
+      border-bottom: 1px solid #e6efff;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--blue-dark);
+      background: #dbeafe;
+      border: 1px solid #bfdbfe;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 20px 0 18px;
+      font-size: clamp(36px, 5vw, 58px);
+      letter-spacing: -2.4px;
+      line-height: 1.12;
+      max-width: 650px;
+    }
+
+    .hero h1 span { color: var(--blue); }
+
+    .hero-copy {
+      max-width: 570px;
+      color: var(--muted);
+      font-size: 17px;
+      margin: 0 0 27px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .secondary-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 17px;
+      border: 1px solid #d7dfec;
+      background: white;
+      border-radius: 11px;
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .secondary-btn:hover { border-color: var(--blue); }
+
+    .hero-note {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .hero-card {
+      padding: 25px;
+      background: white;
+      border: 1px solid #e2eaf8;
+      border-radius: 24px;
+      box-shadow: 0 22px 65px #1d4ed81a;
+      transform: rotate(1deg);
+    }
+
+    .hero-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .hero-card-title { font-weight: 800; }
+
+    .live-dot {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: #15803d;
+      font-weight: 800;
+    }
+
+    .live-dot::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      background: #22c55e;
+      border-radius: 50%;
+    }
+
+    .learning-item {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      padding: 14px 0;
+      border-bottom: 1px solid #edf0f5;
+    }
+
+    .learning-item:last-child { border-bottom: 0; }
+
+    .learning-icon {
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      width: 45px;
+      height: 45px;
+      border-radius: 13px;
+      font-size: 21px;
+    }
+
+    .learning-icon.excel { background: #dcfce7; }
+    .learning-icon.code { background: #dbeafe; }
+    .learning-icon.work { background: #f3e8ff; }
+
+    .learning-item strong { display: block; font-size: 14px; }
+    .learning-item small { color: var(--muted); font-size: 12px; }
+
+    .section { padding: 64px 0; }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 25px;
+    }
+
+    .section-heading h2 {
+      margin: 0 0 6px;
+      font-size: clamp(25px, 3vw, 34px);
+      letter-spacing: -1px;
+      line-height: 1.25;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .ad-box {
+      display: flex;
+      min-height: 112px;
+      padding: 18px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 4px;
+      color: #94a3b8;
+      background: #f1f5f9;
+      border: 1px dashed #cbd5e1;
+      border-radius: 14px;
+      font-size: 12px;
+    }
+
+    .ad-box strong {
+      color: #64748b;
+      font-size: 13px;
+      letter-spacing: .8px;
+    }
+
+    .ad-box span { font-size: 11px; }
+
+    .top-ad { margin-bottom: 48px; }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .category-card {
+      text-align: left;
+      padding: 23px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      transition: .2s;
+    }
+
+    .category-card:hover {
+      border-color: #93c5fd;
+      box-shadow: var(--shadow);
+      transform: translateY(-3px);
+    }
+
+    .category-card.active {
+      border-color: var(--blue);
+      background: #f0f7ff;
+      box-shadow: 0 0 0 2px #dbeafe;
+    }
+
+    .category-emoji {
+      display: grid;
+      place-items: center;
+      width: 49px;
+      height: 49px;
+      border-radius: 14px;
+      margin-bottom: 15px;
+      font-size: 24px;
+    }
+
+    .category-card h3 { margin: 0 0 5px; font-size: 18px; }
+    .category-card p { margin: 0 0 12px; color: var(--muted); font-size: 13px; }
+    .category-count { color: var(--blue); font-size: 12px; font-weight: 800; }
+
+    .articles-section { padding-top: 12px; }
+
+    .search-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 28px 0 18px;
+    }
+
+    .search-wrap {
+      position: relative;
+      flex: 1;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 17px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #94a3b8;
+      font-size: 19px;
+      pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      min-height: 52px;
+      padding: 13px 17px 13px 48px;
+      color: var(--ink);
+      background: white;
+      border: 1px solid #dbe3ef;
+      border-radius: 12px;
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px #dbeafe;
+    }
+
+    .reset-btn {
+      padding: 13px 17px;
+      background: white;
+      border: 1px solid #dbe3ef;
+      border-radius: 12px;
+      color: #475569;
+      font-weight: 700;
+    }
+
+    .filter-list {
+      display: flex;
+      gap: 9px;
+      flex-wrap: wrap;
+      margin-bottom: 25px;
+    }
+
+    .filter-btn {
+      padding: 8px 14px;
+      border: 1px solid #e2e8f0;
+      border-radius: 999px;
+      background: white;
+      color: #475569;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      color: white;
+      background: var(--blue);
+      border-color: var(--blue);
+    }
+
+    .results-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 16px;
+    }
+
+    .article-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .article-card {
+      display: flex;
+      min-width: 0;
+      flex-direction: column;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: .2s;
+    }
+
+    .article-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 40px #0f172a0d;
+      border-color: #cbdcfb;
+    }
+
+    .article-art {
+      display: flex;
+      min-height: 158px;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .article-art::before, .article-art::after {
+      content: "";
+      position: absolute;
+      border: 1px solid #ffffff70;
+      border-radius: 50%;
+    }
+
+    .article-art::before {
+      width: 190px;
+      height: 190px;
+      right: -35px;
+      top: -95px;
+    }
+
+    .article-art::after {
+      width: 130px;
+      height: 130px;
+      left: -50px;
+      bottom: -75px;
+    }
+
+    .article-art .art-emoji {
+      position: relative;
+      z-index: 1;
+      font-size: 53px;
+      filter: drop-shadow(0 8px 12px #00000012);
+    }
+
+    .art-excel { background: linear-gradient(135deg, #dcfce7, #bbf7d0); }
+    .art-code { background: linear-gradient(135deg, #dbeafe, #bfdbfe); }
+    .art-work { background: linear-gradient(135deg, #f3e8ff, #e9d5ff); }
+    .art-blue { background: linear-gradient(135deg, #dbeafe, #c7d2fe); }
+    .art-orange { background: linear-gradient(135deg, #ffedd5, #fed7aa); }
+    .art-teal { background: linear-gradient(135deg, #ccfbf1, #99f6e4); }
+
+    .article-body {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 21px;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .article-tag {
+      display: inline-block;
+      color: #1d4ed8;
+      background: #eff6ff;
+      padding: 4px 9px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .article-time { color: #94a3b8; font-size: 11px; white-space: nowrap; }
+
+    .article-body h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      line-height: 1.4;
+      letter-spacing: -.3px;
+    }
+
+    .article-body > p {
+      color: var(--muted);
+      font-size: 13px;
+      margin: 0 0 20px;
+    }
+
+    .read-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: auto;
+      padding: 12px 0 0;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid #edf0f5;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 800;
+      text-align: left;
+    }
+
+    .read-btn:hover { color: var(--blue-dark); }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      padding: 50px 20px;
+      text-align: center;
+      background: white;
+      border: 1px dashed #cbd5e1;
+      border-radius: var(--radius);
+    }
+
+    .empty-state .empty-icon { font-size: 36px; }
+    .empty-state h3 { margin: 10px 0 5px; }
+    .empty-state p { margin: 0; color: var(--muted); }
+
+    .mid-ad { margin: 35px 0; }
+
+    .newsletter {
+      padding: 45px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #1d4ed8, #2563eb 60%, #3b82f6);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .newsletter h2 {
+      margin: 0 0 8px;
+      font-size: clamp(24px, 3vw, 32px);
+      line-height: 1.25;
+      letter-spacing: -.8px;
+    }
+
+    .newsletter p { margin: 0; color: #dbeafe; font-size: 14px; }
+
+    .newsletter-badge {
+      flex-shrink: 0;
+      padding: 12px 17px;
+      background: white;
+      border-radius: 11px;
+      color: var(--blue-dark);
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .footer {
+      margin-top: 55px;
+      padding: 42px 0 22px;
+      background: white;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 35px;
+      padding-bottom: 32px;
+    }
+
+    .footer-description {
+      max-width: 350px;
+      color: var(--muted);
+      font-size: 13px;
+      margin: 13px 0 0;
+    }
+
+    .footer h4 { margin: 0 0 13px; font-size: 14px; }
+    .footer-links { display: grid; gap: 9px; }
+    .footer-links a { color: var(--muted); font-size: 13px; }
+    .footer-links a:hover { color: var(--blue); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      color: #94a3b8;
+      font-size: 12px;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: #0f172a99;
+      backdrop-filter: blur(5px);
+    }
+
+    .modal.open { display: flex; }
+
+    .modal-panel {
+      position: relative;
+      width: min(720px, 100%);
+      max-height: 88vh;
+      overflow-y: auto;
+      background: white;
+      border-radius: 22px;
+      padding: clamp(22px, 5vw, 42px);
+      box-shadow: 0 25px 100px #00000030;
+    }
+
+    .modal-close {
+      position: sticky;
+      float: right;
+      top: 0;
+      display: grid;
+      place-items: center;
+      width: 39px;
+      height: 39px;
+      margin: -10px -10px 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: white;
+      font-size: 22px;
+      color: #475569;
+    }
+
+    .modal-close:hover { background: #f1f5f9; }
+
+    .modal-category { color: var(--blue); font-size: 12px; font-weight: 800; text-transform: uppercase; }
+
+    .modal-panel h2 {
+      margin: 10px 0;
+      font-size: clamp(25px, 4vw, 35px);
+      line-height: 1.25;
+      letter-spacing: -1px;
+    }
+
+    .modal-description { color: var(--muted); margin: 0 0 25px; }
+
+    .tutorial-content h3 { margin-top: 26px; font-size: 19px; }
+    .tutorial-content p, .tutorial-content li { color: #475569; }
+    .tutorial-content code {
+      padding: 3px 6px;
+      background: #eff6ff;
+      border-radius: 5px;
+      color: #1d4ed8;
+      overflow-wrap: anywhere;
+    }
+
+    .tutorial-content pre {
+      padding: 16px;
+      background: #0f172a;
+      color: #e2e8f0;
+      border-radius: 12px;
+      overflow-x: auto;
+      font-size: 13px;
+    }
+
+    .tutorial-content pre code {
+      padding: 0;
+      color: inherit;
+      background: transparent;
+    }
+
+    .notice {
+      padding: 13px 15px;
+      border-left: 3px solid var(--blue);
+      border-radius: 5px;
+      background: #eff6ff;
+      color: #1e40af;
+      font-size: 13px;
+    }
+
+    @media (max-width: 850px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 35px; }
+      .hero-card { max-width: 500px; transform: none; }
+      .article-grid { grid-template-columns: repeat(2, 1fr); }
+      .category-grid { grid-template-columns: 1fr; }
+      .category-card { display: grid; grid-template-columns: 55px 1fr; gap: 0 14px; }
+      .category-emoji { grid-row: span 3; margin: 0; }
+      .category-card h3 { align-self: end; }
+      .category-card p { margin: 4px 0; }
+      .category-count { align-self: start; }
+      .nav-links { gap: 15px; }
+      .nav-cta { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .container { width: min(100% - 30px, 1120px); }
+      .nav-inner { min-height: 65px; gap: 10px; }
+      .brand { font-size: 18px; }
+      .brand-mark { width: 37px; height: 37px; }
+      .nav-links { gap: 12px; font-size: 12px; }
+      .nav-links a:nth-child(2) { display: none; }
+      .hero { padding: 52px 0 45px; }
+      .hero h1 { letter-spacing: -1.5px; }
+      .hero-copy { font-size: 15px; }
+      .hero-card { padding: 19px; }
+      .section { padding: 46px 0; }
+      .section-heading { align-items: start; flex-direction: column; gap: 10px; }
+      .search-row { align-items: stretch; flex-direction: column; }
+      .reset-btn { width: 100%; }
+      .article-grid { grid-template-columns: 1fr; }
+      .article-art { min-height: 145px; }
+      .newsletter { padding: 28px 23px; align-items: start; flex-direction: column; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 25px; }
+      .footer-grid > div:first-child { grid-column: 1 / -1; }
+      .top-ad { margin-bottom: 35px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="#home" aria-label="DigitalPintar beranda">
+        <span class="brand-mark">D<span style="color:#bfdbfe">.</span></span>
+        <span>Digital<span>Pintar</span></span>
+      </a>
+
+      <nav class="nav-links" aria-label="Navigasi utama">
+        <a href="#home">Beranda</a>
+        <a href="#kategori">Kategori</a>
+        <a href="#artikel">Artikel</a>
+      </nav>
+
+      <a class="nav-cta" href="#artikel">Mulai belajar <span>→</span></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">✦ Belajar skill digital</span>
+          <h1>Tingkatkan skill.<br><span>Buka peluang baru.</span></h1>
+          <p class="hero-copy">
+            Panduan praktis Excel, coding, dan produktivitas digital
+            untuk membantu kamu belajar lebih efektif dan berkembang di era digital.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-btn" href="#artikel">Jelajahi tutorial <span>→</span></a>
+            <a class="secondary-btn" href="#kategori">Lihat kategori</a>
+          </div>
+          <p class="hero-note">✓ Materi untuk pemula &nbsp; ✓ Langsung praktik</p>
+        </div>
+
+        <div class="hero-card">
+          <div class="hero-card-top">
+            <span class="hero-card-title">Mulai dari sini</span>
+            <span class="live-dot">Panduan pemula</span>
+          </div>
+
+          <div class="learning-item">
+            <div class="learning-icon excel">📊</div>
+            <div><strong>Microsoft Excel</strong><small>Rumus dan olah data</small></div>
+          </div>
+          <div class="learning-item">
+            <div class="learning-icon code">💻</div>
+            <div><strong>Belajar Coding</strong><small>HTML, CSS, dan JavaScript</small></div>
+          </div>
+          <div class="learning-item">
+            <div class="learning-icon work">⚡</div>
+            <div><strong>Produktivitas Digital</strong><small>Kerja lebih rapi dan efisien</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <!-- TEMPAT IKLAN: ganti isi area ini saat sudah punya kode iklan resmi -->
+        <div class="ad-box top-ad" aria-label="Area iklan">
+          <strong>ADVERTISEMENT</strong>
+          <span>Area iklan • 970 × 90 (perkiraan desktop)</span>
+          <span>Slot ini masih placeholder, belum menampilkan iklan berbayar.</span>
+        </div>
+
+        <div class="section-heading" id="kategori">
+          <div>
+            <h2>Belajar sesuai kebutuhanmu</h2>
+            <p>Pilih topik yang ingin kamu kuasai.</p>
+          </div>
+        </div>
+
+        <div class="category-grid">
+          <button class="category-card" data-category="Excel" aria-pressed="false">
+            <span class="category-emoji" style="background:#dcfce7">📊</span>
+            <h3>Microsoft Excel</h3>
+            <p>Rumus, tabel, dan pengolahan data dari dasar.</p>
+            <span class="category-count" id="count-excel">Artikel tutorial →</span>
+          </button>
+
+          <button class="category-card" data-category="Coding" aria-pressed="false">
+            <span class="category-emoji" style="background:#dbeafe">💻</span>
+            <h3>Belajar Coding</h3>
+            <p>Bangun website dan pahami dasar pemrograman.</p>
+            <span class="category-count" id="count-coding">Artikel tutorial →</span>
+          </button>
+
+          <button class="category-card" data-category="Produktivitas" aria-pressed="false">
+            <span class="category-emoji" style="background:#f3e8ff">⚡</span>
+            <h3>Produktivitas</h3>
+            <p>Kelola waktu, file, dan pekerjaan dengan lebih baik.</p>
+            <span class="category-count" id="count-work">Artikel tutorial →</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section articles-section" id="artikel">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>Jelajahi tutorial</h2>
+            <p>Materi praktis yang bisa langsung kamu coba.</p>
+          </div>
+        </div>
+
+        <div class="search-row">
+          <div class="search-wrap">
+            <span class="search-icon" aria-hidden="true">⌕</span>
+            <input
+              id="searchInput"
+              class="search-input"
+              type="search"
+              placeholder="Cari artikel, misalnya rumus Excel..."
+              aria-label="Cari artikel"
+              autocomplete="off"
+            >
+          </div>
+          <button class="reset-btn" id="resetBtn" type="button">Reset filter ↺</button>
+        </div>
+
+        <div class="filter-list" aria-label="Filter kategori">
+          <button class="filter-btn active" data-filter="Semua" aria-pressed="true">Semua artikel</button>
+          <button class="filter-btn" data-filter="Excel" aria-pressed="false">📊 Excel</button>
+          <button class="filter-btn" data-filter="Coding" aria-pressed="false">💻 Coding</button>
+          <button class="filter-btn" data-filter="Produktivitas" aria-pressed="false">⚡ Produktivitas</button>
+        </div>
+
+        <div class="results-line">
+          <span id="resultsCount" aria-live="polite">Memuat artikel...</span>
+          <span>Materi belajar digital</span>
+        </div>
+
+        <div class="article-grid" id="articleGrid"></div>
+
+        <div class="ad-box mid-ad" aria-label="Area iklan artikel">
+          <strong>ADVERTISEMENT</strong>
+          <span>Area iklan di antara artikel</span>
+          <span>Tempatkan kode iklan resmi di sini setelah akun disetujui.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="newsletter">
+        <div>
+          <h2>Mulai belajar dari hal kecil.</h2>
+          <p>Pilih satu tutorial, praktikkan, lalu tingkatkan kemampuanmu sedikit demi sedikit.</p>
+        </div>
+        <a class="newsletter-badge" href="#artikel">Cari tutorial →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="tentang">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="#home">
+            <span class="brand-mark">D<span style="color:#bfdbfe">.</span></span>
+            <span>Digital<span>Pintar</span></span>
+          </a>
+          <p class="footer-description">
+            Teman belajar digital untuk siapa saja yang ingin memahami teknologi,
+            mengembangkan skill, dan menjadi lebih produktif.
+          </p>
+        </div>
+
+        <div>
+          <h4>Jelajahi</h4>
+          <div class="footer-links">
+            <a href="#kategori">Kategori belajar</a>
+            <a href="#artikel">Semua artikel</a>
+            <a href="#home">Kembali ke atas ↑</a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Informasi</h4>
+          <div class="footer-links">
+            <a href="#tentang" id="aboutLink">Tentang DigitalPintar</a>
+            <a href="#tentang" id="privacyLink">Kebijakan privasi</a>
+            <a href="#tentang" id="contactLink">Kontak</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> DigitalPintar. Hak cipta dilindungi.</span>
+        <span>Dibuat untuk belajar dan berkembang. 💙</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal" id="articleModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-panel">
+      <button class="modal-close" id="modalClose" aria-label="Tutup artikel" type="button">×</button>
+      <span class="modal-category" id="modalCategory"></span>
+      <h2 id="modalTitle"></h2>
+      <p class="modal-description" id="modalDescription"></p>
+      <div class="tutorial-content" id="modalContent"></div>
+      <div class="notice" style="margin-top:25px">
+        Tips: praktikkan langkah-langkahnya langsung di laptop agar lebih mudah dipahami.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    "use strict";
+
+    const articles = [
+      {
+        id: 1,
+        category: "Excel",
+        title: "5 Rumus Excel Dasar yang Wajib Kamu Kuasai",
+        description: "Pelajari SUM, AVERAGE, COUNT, MAX, dan MIN untuk mengolah data dengan lebih cepat.",
+        emoji: "📊",
+        art: "art-excel",
+        time: "5 menit",
+        content: `
+          <p>Microsoft Excel membantu kita menghitung dan mengatur data. Lima rumus berikut cocok untuk memulai.</p>
+          <h3>1. SUM — menjumlahkan angka</h3>
+          <p>Misalnya angka ada di sel A1 sampai A5. Gunakan:</p>
+          <pre><code>=SUM(A1:A5)</code></pre>
+          <h3>2. AVERAGE — menghitung rata-rata</h3>
+          <pre><code>=AVERAGE(A1:A5)</code></pre>
+          <h3>3. COUNT — menghitung sel berisi angka</h3>
+          <pre><code>=COUNT(A1:A5)</code></pre>
+          <h3>4. MAX — mencari angka terbesar</h3>
+          <pre><code>=MAX(A1:A5)</code></pre>
+          <h3>5. MIN — mencari angka terkecil</h3>
+          <pre><code>=MIN(A1:A5)</code></pre>
+          <h3>Tips praktik</h3>
+          <p>Buat tabel nilai lima siswa, lalu coba setiap rumus. Pada beberapa pengaturan regional, Excel menggunakan titik koma sebagai pemisah argumen.</p>
+        `
+      },
+      {
+        id: 2,
+        category: "Coding",
+        title: "Cara Membuat Website Pertama dengan HTML",
+        description: "Kenali struktur dasar HTML dan buat halaman web sederhana dari nol.",
+        emoji: "💻",
+        art: "art-code",
+        time: "7 menit",
+        content: `
+          <p>HTML adalah bahasa markup untuk menyusun struktur halaman web. Kamu bisa mulai menggunakan editor teks seperti VS Code.</p>
+          <h3>Langkah 1: Buat file</h3>
+          <p>Buat file baru bernama <code>index.html</code>.</p>
+          <h3>Langkah 2: Masukkan kode</h3>
+          <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="id"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport"
+    content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Website Pertamaku&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Halo, dunia!&lt;/h1&gt;
+  &lt;p&gt;Ini website pertamaku.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          <h3>Langkah 3: Buka di browser</h3>
+          <p>Simpan file, lalu klik dua kali file tersebut. Browser akan menampilkan halaman yang kamu buat.</p>
+          <h3>Langkah berikutnya</h3>
+          <p>Pelajari CSS untuk mempercantik tampilan dan JavaScript untuk menambahkan interaksi.</p>
+        `
+      },
+      {
+        id: 3,
+        category: "Produktivitas",
+        title: "Cara Mengatur Waktu Belajar agar Lebih Fokus",
+        description: "Bagi tugas menjadi bagian kecil, tentukan prioritas, dan evaluasi hasil harian.",
+        emoji: "⏱️",
+        art: "art-work",
+        time: "4 menit",
+        content: `
+          <p>Produktif bukan berarti harus sibuk sepanjang hari. Kuncinya adalah mengetahui pekerjaan yang paling penting dan mengerjakannya dengan fokus.</p>
+          <h3>1. Tentukan tiga prioritas</h3>
+          <p>Setiap pagi atau malam sebelumnya, tulis tiga tugas yang paling penting untuk diselesaikan.</p>
+          <h3>2. Bagi tugas besar</h3>
+          <p>Daripada menulis "belajar coding", ubah menjadi tugas konkret seperti membaca satu materi dan membuat satu contoh halaman.</p>
+          <h3>3. Gunakan sesi fokus</h3>
+          <p>Cobalah belajar selama 25 menit, kemudian istirahat 5 menit. Sesuaikan durasinya dengan kebutuhanmu.</p>
+          <h3>4. Kurangi gangguan</h3>
+          <p>Matikan notifikasi yang tidak diperlukan dan siapkan materi sebelum memulai.</p>
+          <h3>5. Evaluasi</h3>
+          <p>Catat apa yang selesai dan apa yang perlu dilanjutkan besok. Jangan membuat daftar tugas terlalu panjang.</p>
+        `
+      },
+      {
+        id: 4,
+        category: "Excel",
+        title: "Cara Membuat Tabel Excel yang Rapi dan Mudah Dibaca",
+        description: "Atur header, format angka, filter, dan warna agar data lebih mudah dipahami.",
+        emoji: "🗂️",
+        art: "art-teal",
+        time: "6 menit",
+        content: `
+          <p>Tabel yang rapi membuat data lebih mudah dicari, diperiksa, dan dianalisis.</p>
+          <h3>1. Buat header yang jelas</h3>
+          <p>Gunakan nama kolom singkat, misalnya Nama, Tanggal, Kategori, dan Jumlah. Hindari header kosong.</p>
+          <h3>2. Ubah data menjadi Table</h3>
+          <p>Pilih data, kemudian tekan <code>Ctrl + T</code>. Pastikan pilihan header sudah sesuai lalu konfirmasi.</p>
+          <h3>3. Gunakan format yang tepat</h3>
+          <p>Format tanggal sebagai tanggal, nominal sebagai mata uang, dan angka sebagai angka. Hindari mencampur beberapa jenis data dalam satu kolom.</p>
+          <h3>4. Aktifkan filter</h3>
+          <p>Fitur filter pada header memudahkan kamu menampilkan data tertentu tanpa menghapus baris lainnya.</p>
+          <h3>5. Jaga konsistensi</h3>
+          <p>Gunakan warna secukupnya dan hindari terlalu banyak garis atau jenis font.</p>
+        `
+      },
+      {
+        id: 5,
+        category: "Coding",
+        title: "Mengenal CSS untuk Mempercantik Website",
+        description: "Pelajari selector, warna, jarak, dan layout untuk mengubah tampilan halaman HTML.",
+        emoji: "🎨",
+        art: "art-blue",
+        time: "6 menit",
+        content: `
+          <p>CSS mengatur tampilan elemen HTML, seperti warna, ukuran teks, jarak, dan posisi.</p>
+          <h3>Contoh CSS dasar</h3>
+          <pre><code>body {
+  font-family: Arial, sans-serif;
+  background: #f8faff;
+  color: #172033;
+}
+
+h1 {
+  color: #2563eb;
+}
+
+.card {
+  padding: 20px;
+  border-radius: 12px;
+  background: white;
+}</code></pre>
+          <h3>Memahami properti</h3>
+          <ul>
+            <li><code>color</code>: warna teks.</li>
+            <li><code>background</code>: warna atau latar belakang.</li>
+            <li><code>padding</code>: ruang di dalam elemen.</li>
+            <li><code>border-radius</code>: membuat sudut membulat.</li>
+          </ul>
+          <h3>Latihan</h3>
+          <p>Buat elemen dengan class <code>card</code>, kemudian terapkan CSS di atas. Ubah warna dan jaraknya untuk melihat hasilnya.</p>
+        `
+      },
+      {
+        id: 6,
+        category: "Produktivitas",
+        title: "Cara Mengelola File Laptop agar Tidak Berantakan",
+        description: "Buat struktur folder yang sederhana dan gunakan nama file yang konsisten.",
+        emoji: "📁",
+        art: "art-orange",
+        time: "4 menit",
+        content: `
+          <p>Folder yang teratur membuat dokumen lebih mudah ditemukan dan mengurangi risiko salah mengedit file.</p>
+          <h3>1. Buat folder utama</h3>
+          <p>Contohnya folder Belajar, Pekerjaan, Proyek, dan Arsip. Buat subfolder hanya jika diperlukan.</p>
+          <h3>2. Gunakan nama yang jelas</h3>
+          <p>Daripada <code>dokumenbaru2</code>, gunakan nama seperti <code>Catatan-Excel-2026</code>.</p>
+          <h3>3. Pisahkan versi file</h3>
+          <p>Untuk proyek yang sedang dikerjakan, gunakan nomor versi atau tanggal secara konsisten.</p>
+          <h3>4. Buat cadangan</h3>
+          <p>Simpan salinan file penting pada media atau layanan penyimpanan lain. Pastikan cadangan dapat dibuka.</p>
+          <h3>5. Bersihkan secara berkala</h3>
+          <p>Luangkan waktu beberapa menit untuk memindahkan file unduhan yang masih diperlukan dan menghapus salinan yang tidak dibutuhkan.</p>
+        `
+      },
+      {
+        id: 7,
+        category: "Excel",
+        title: "Mengenal Fungsi IF untuk Membuat Keputusan Otomatis",
+        description: "Gunakan fungsi IF untuk memberi hasil berbeda berdasarkan kondisi tertentu.",
+        emoji: "🧮",
+        art: "art-excel",
+        time: "5 menit",
+        content: `
+          <p>Fungsi IF memeriksa sebuah kondisi dan mengembalikan hasil jika kondisi benar atau salah.</p>
+          <h3>Sintaks dasar</h3>
+          <pre><code>=IF(kondisi, nilai_jika_benar, nilai_jika_salah)</code></pre>
+          <h3>Contoh sederhana</h3>
+          <p>Misalnya nilai siswa berada di sel B2. Untuk menampilkan status lulus jika nilainya minimal 75:</p>
+          <pre><code>=IF(B2>=75,"Lulus","Belum lulus")</code></pre>
+          <h3>Bagaimana cara kerjanya?</h3>
+          <ul>
+            <li>Excel memeriksa apakah nilai B2 lebih besar atau sama dengan 75.</li>
+            <li>Jika benar, hasilnya adalah "Lulus".</li>
+            <li>Jika salah, hasilnya adalah "Belum lulus".</li>
+          </ul>
+          <p>Jika Excel kamu menggunakan titik koma sebagai pemisah argumen, ubah koma dalam rumus menjadi titik koma.</p>
+        `
+      },
+      {
+        id: 8,
+        category: "Coding",
+        title: "JavaScript: Membuat Tombol Interaktif",
+        description: "Pahami cara JavaScript merespons klik pengguna melalui contoh sederhana.",
+        emoji: "⚙️",
+        art: "art-orange",
+        time: "5 menit",
+        content: `
+          <p>JavaScript membuat halaman web bisa merespons tindakan pengguna, seperti menekan tombol.</p>
+          <h3>Contoh HTML</h3>
+          <pre><code>&lt;button id="tombol"&gt;Klik saya&lt;/button&gt;
+&lt;p id="pesan"&gt;&lt;/p&gt;</code></pre>
+          <h3>Tambahkan JavaScript</h3>
+          <pre><code>document
+  .getElementById("tombol")
+  .addEventListener("click", function () {
+    document.getElementById("pesan")
+      .textContent = "Berhasil diklik!";
+  });</code></pre>
+          <h3>Penjelasan</h3>
+          <p>JavaScript mencari tombol berdasarkan ID, menunggu klik, lalu mengubah teks paragraf. Letakkan script setelah elemen HTML atau gunakan atribut <code>defer</code> pada file script eksternal.</p>
+          <p>Coba ubah pesan yang muncul setelah tombol ditekan.</p>
+        `
+      },
+      {
+        id: 9,
+        category: "Produktivitas",
+        title: "Shortcut Keyboard yang Berguna untuk Sehari-hari",
+        description: "Hemat waktu dengan pintasan keyboard untuk menyalin, mencari, dan mengatur jendela.",
+        emoji: "⌨️",
+        art: "art-work",
+        time: "3 menit",
+        content: `
+          <p>Pintasan keyboard dapat mengurangi penggunaan mouse untuk tugas yang sering dilakukan.</p>
+          <h3>Pintasan umum Windows</h3>
+          <ul>
+            <li><code>Ctrl + C</code> — menyalin pilihan.</li>
+            <li><code>Ctrl + V</code> — menempelkan.</li>
+            <li><code>Ctrl + Z</code> — membatalkan tindakan terakhir.</li>
+            <li><code>Ctrl + F</code> — mencari teks.</li>
+            <li><code>Alt + Tab</code> — berpindah aplikasi.</li>
+            <li><code>Win + E</code> — membuka File Explorer.</li>
+            <li><code>Win + Shift + S</code> — mengambil screenshot sebagian layar.</li>
+          </ul>
+          <h3>Tips menghafal</h3>
+          <p>Pilih dua atau tiga shortcut yang paling sering kamu butuhkan. Biasakan menggunakannya selama beberapa hari sebelum menambah pintasan baru.</p>
+        `
+      }
+    ];
+
+    const grid = document.getElementById("articleGrid");
+    const searchInput = document.getElementById("searchInput");
+    const resultsCount = document.getElementById("resultsCount");
+    const modal = document.getElementById("articleModal");
+    const modalClose = document.getElementById("modalClose");
+
+    let selectedCategory = "Semua";
+    let lastFocusedElement = null;
+
+    function escapeHTML(value) {
+      return String(value).replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      })[char]);
+    }
+
+    function filteredArticles() {
+      const query = searchInput.value.trim().toLocaleLowerCase("id");
+
+      return articles.filter(article => {
+        const matchesCategory =
+          selectedCategory === "Semua" ||
+          article.category === selectedCategory;
+
+        const searchableText = [
+          article.title,
+          article.description,
+          article.category
+        ].join(" ").toLocaleLowerCase("id");
+
+        return matchesCategory && searchableText.includes(query);
+      });
+    }
+
+    function renderArticles() {
+      const results = filteredArticles();
+
+      resultsCount.textContent =
+        `Menampilkan ${results.length} dari ${articles.length} artikel`;
+
+      if (results.length === 0) {
+        grid.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-icon">🔎</div>
+            <h3>Artikel belum ditemukan</h3>
+            <p>Coba kata kunci lain atau pilih kategori berbeda.</p>
+          </div>`;
+        return;
+      }
+
+      grid.innerHTML = results.map(article => `
+        <article class="article-card">
+          <div class="article-art ${article.art}">
+            <span class="art-emoji" aria-hidden="true">${article.emoji}</span>
+          </div>
+          <div class="article-body">
+            <div class="article-meta">
+              <span class="article-tag">${escapeHTML(article.category)}</span>
+              <span class="article-time">◷ ${escapeHTML(article.time)}</span>
+            </div>
+            <h3>${escapeHTML(article.title)}</h3>
+            <p>${escapeHTML(article.description)}</p>
+            <button class="read-btn" type="button" data-article-id="${article.id}">
+              Baca tutorial <span aria-hidden="true">↗</span>
+            </button>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function setCategory(category) {
+      selectedCategory = category;
+
+      document.querySelectorAll("[data-filter]").forEach(button => {
+        const active = button.dataset.filter === category;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+
+      document.querySelectorAll(".category-card").forEach(button => {
+        const active = button.dataset.category === category;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+
+      renderArticles();
+    }
+
+    function openArticle(id, trigger) {
+      const article = articles.find(item => item.id === Number(id));
+      if (!article) return;
+
+      lastFocusedElement = trigger || document.activeElement;
+
+      document.getElementById("modalCategory").textContent = article.category;
+      document.getElementById("modalTitle").textContent = article.title;
+      document.getElementById("modalDescription").textContent = article.description;
+      document.getElementById("modalContent").innerHTML = article.content;
+
+      modal.classList.add("open");
+      document.body.style.overflow = "hidden";
+      modalClose.focus();
+    }
+
+    function closeArticle() {
+      modal.classList.remove("open");
+      document.body.style.overflow = "";
+
+      if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
+        lastFocusedElement.focus();
+      }
+    }
+
+    searchInput.addEventListener("input", renderArticles);
+
+    document.querySelectorAll("[data-filter]").forEach(button => {
+      button.addEventListener("click", () => {
+        setCategory(button.dataset.filter);
+        document.getElementById("artikel").scrollIntoView({ behavior: "smooth" });
+      });
+    });
+
+    document.querySelectorAll(".category-card").forEach(button => {
+      button.addEventListener("click", () => {
+        setCategory(button.dataset.category);
+        document.getElementById("artikel").scrollIntoView({ behavior: "smooth" });
+      });
+    });
+
+    grid.addEventListener("click", event => {
+      const button = event.target.closest("[data-article-id]");
+      if (button) openArticle(button.dataset.articleId, button);
+    });
+
+    document.getElementById("resetBtn").addEventListener("click", () => {
+      searchInput.value = "";
+      setCategory("Semua");
+      renderArticles();
+      searchInput.focus();
+    });
+
+    modalClose.addEventListener("click", closeArticle);
+
+    modal.addEventListener("click", event => {
+      if (event.target === modal) closeArticle();
+    });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape" && modal.classList.contains("open")) {
+        closeArticle();
+      }
+    });
+
+    document.getElementById("aboutLink").addEventListener("click", event => {
+      event.preventDefault();
+      alert("DigitalPintar adalah proyek edukasi digital. Tambahkan profil pengelola dan informasi resmi sebelum website dipublikasikan secara luas.");
+    });
+
+    document.getElementById("privacyLink").addEventListener("click", event => {
+      event.preventDefault();
+      alert("Halaman kebijakan privasi belum dibuat. Buat halaman kebijakan privasi yang sesuai dengan layanan dan data yang benar-benar digunakan sebelum memasang iklan atau analitik.");
+    });
+
+    document.getElementById("contactLink").addEventListener("click", event => {
+      event.preventDefault();
+      alert("Informasi kontak belum diatur. Ganti bagian ini dengan alamat kontak resmi yang kamu kelola.");
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    ["Excel", "Coding", "Produktivitas"].forEach(category => {
+      const count = articles.filter(article => article.category === category).length;
+      const target = {
+        Excel: "count-excel",
+        Coding: "count-coding",
+        Produktivitas: "count-work"
+      }[category];
+
+      document.getElementById(target).textContent =
+        `${count} tutorial · Jelajahi →`;
+    });
+
+    renderArticles();
+  </script>
+</body>
+</html>
