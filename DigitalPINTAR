@@ -1,0 +1,398 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="DigitalPintar: belajar Excel, coding, dan produktivitas digital lewat tutorial praktis untuk pemula.">
+<title>DigitalPintar — Belajar Digital Lebih Mudah</title>
+<style>
+:root{--blue:#2563eb;--dark:#10203d;--muted:#64748b;--line:#e5eaf2;--bg:#f7f9fd}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;color:var(--dark);background:white;line-height:1.7}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+.wrap{width:min(1100px,92%);margin:auto}
+header{border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:10}
+.nav{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-size:23px;font-weight:900;letter-spacing:-1px}
+.logo span{color:var(--blue)}
+nav{display:flex;gap:22px;font-size:14px;font-weight:600}
+nav a:hover{color:var(--blue)}
+.hero{padding:76px 0 65px;background:linear-gradient(135deg,#eff6ff,#fff 65%,#eaf2ff)}
+.eyebrow{display:inline-block;background:#dbeafe;color:#1d4ed8;padding:6px 12px;border-radius:30px;font-size:12px;font-weight:bold}
+h1{font-size:clamp(34px,5vw,55px);line-height:1.13;letter-spacing:-1.8px;margin:20px 0}
+h1 span{color:var(--blue)}
+.hero p{max-width:640px;color:var(--muted);font-size:17px}
+.search{margin-top:25px;display:flex;max-width:600px;gap:8px}
+.search input{flex:1;min-width:0;padding:14px 16px;border:1px solid #d5deeb;border-radius:10px;background:#fff;outline-color:var(--blue)}
+.btn{border:0;background:var(--blue);color:white;padding:13px 18px;border-radius:10px;font-weight:bold;cursor:pointer}
+.btn:hover{background:#1d4ed8}
+section{padding:55px 0}
+.section-head{margin-bottom:23px}
+.section-head h2{font-size:29px;letter-spacing:-.7px}
+.section-head p{color:var(--muted);margin-top:4px}
+.categories{display:flex;gap:9px;flex-wrap:wrap;margin:20px 0 25px}
+.chip{border:1px solid var(--line);background:#fff;border-radius:30px;padding:8px 15px;cursor:pointer;font-size:13px}
+.chip.active,.chip:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{border:1px solid var(--line);border-radius:15px;overflow:hidden;background:white;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 30px #10203d0c}
+.card-top{height:110px;background:linear-gradient(135deg,#eff6ff,#dbeafe);display:flex;align-items:center;justify-content:center;font-size:38px}
+.card-body{padding:19px}
+.tag{font-size:11px;font-weight:bold;color:var(--blue);text-transform:uppercase;letter-spacing:.5px}
+.card h3{font-size:18px;line-height:1.4;margin:8px 0}
+.card p{font-size:13px;color:var(--muted);margin-bottom:15px}
+.read{color:var(--blue);font-weight:bold;font-size:13px;cursor:pointer;background:none;border:0}
+.ad{border:1px dashed #b9c7db;background:#fafcff;border-radius:12px;min-height:105px;display:flex;align-items:center;justify-content:center;text-align:center;color:#8492a6;font-size:13px;margin:28px 0;padding:18px}
+.article-view{display:none;padding:42px 0 65px}
+.article{max-width:780px;margin:auto}
+.back{color:var(--blue);font-weight:bold;cursor:pointer;border:0;background:none;margin-bottom:25px}
+.article h1{font-size:clamp(30px,4vw,43px);margin:12px 0}
+.article .intro{font-size:18px;color:var(--muted);margin-bottom:28px}
+.article h2{font-size:24px;margin:30px 0 10px}
+.article h3{font-size:18px;margin:20px 0 8px}
+.article p,.article li{margin:10px 0}
+.article ul,.article ol{padding-left:24px}
+pre{background:#101b30;color:#e2e8f0;padding:18px;border-radius:10px;overflow:auto;margin:15px 0;font-size:13px;line-height:1.8}
+.example{background:#eff6ff;border-left:4px solid var(--blue);padding:15px;border-radius:7px;margin:16px 0}
+.exercise{background:#f8fafc;border:1px solid var(--line);padding:18px;border-radius:10px;margin-top:22px}
+.exercise summary{font-weight:bold;cursor:pointer}
+.exercise p{margin-top:12px}
+.empty{grid-column:1/-1;padding:35px;text-align:center;color:var(--muted)}
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.info-card{border:1px solid var(--line);border-radius:12px;padding:22px}
+.info-card h3{margin-bottom:8px}
+.info-card p{color:var(--muted);font-size:14px}
+footer{background:#101b30;color:#cbd5e1;padding:35px 0}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.foot strong{color:#fff}
+.foot a{margin-left:15px;font-size:13px}
+footer p{font-size:13px;margin-top:8px}
+.hidden{display:none!important}
+@media(max-width:760px){nav{gap:12px;font-size:12px}.grid{grid-template-columns:repeat(2,1fr)}.info-grid{grid-template-columns:1fr}.hero{padding:52px 0}.search{flex-direction:column}.search .btn{width:100%}}
+@media(max-width:480px){nav a:nth-child(2){display:none}.grid{grid-template-columns:1fr}.card-top{height:90px}section{padding:40px 0}}
+</style>
+</head>
+<body>
+<header>
+<div class="wrap nav">
+<a class="logo" href="#" onclick="home();return false">Digital<span>Pintar.</span></a>
+<nav>
+<a href="#artikel" onclick="home()">Artikel</a>
+<a href="#kategori" onclick="home()">Kategori</a>
+<a href="#tentang" onclick="home()">Tentang</a>
+</nav>
+</div>
+</header>
+
+<main id="home">
+<div class="hero">
+<div class="wrap">
+<span class="eyebrow">BELAJAR • PRAKTIK • BERKEMBANG</span>
+<h1>Upgrade skill digital,<br><span>mulai dari sekarang.</span></h1>
+<p>Belajar Excel, coding, dan produktivitas digital lewat panduan sederhana, contoh nyata, dan latihan yang bisa langsung kamu coba.</p>
+<div class="search">
+<input id="search" type="search" placeholder="Cari tutorial, misalnya rumus Excel..." aria-label="Cari artikel">
+<button class="btn" onclick="render()">Cari artikel</button>
+</div>
+</div>
+</div>
+
+<section id="kategori">
+<div class="wrap">
+<div class="section-head"><h2>Belajar sesuai kebutuhan</h2><p>Pilih bidang yang ingin kamu kuasai.</p></div>
+<div class="info-grid">
+<a class="info-card" href="#artikel" onclick="setCategory('Excel')"><h3>📊 Excel</h3><p>Rumus, pengolahan data, dan laporan.</p></a>
+<a class="info-card" href="#artikel" onclick="setCategory('Coding')"><h3>💻 Coding</h3><p>HTML, CSS, JavaScript, dan website.</p></a>
+<a class="info-card" href="#artikel" onclick="setCategory('Produktivitas')"><h3>⚡ Produktivitas</h3><p>Manajemen waktu dan kerja lebih efektif.</p></a>
+</div>
+</div>
+</section>
+
+<section id="artikel" style="background:var(--bg)">
+<div class="wrap">
+<div class="section-head"><h2>Artikel tutorial</h2><p>Materi praktis untuk pemula sampai tingkat menengah.</p></div>
+<div class="categories">
+<button class="chip active" onclick="setCategory('Semua',this)">Semua</button>
+<button class="chip" onclick="setCategory('Excel',this)">Excel</button>
+<button class="chip" onclick="setCategory('Coding',this)">Coding</button>
+<button class="chip" onclick="setCategory('Produktivitas',this)">Produktivitas</button>
+</div>
+<div class="ad">RUANG IKLAN<br>Area ini dapat digunakan untuk iklan setelah situs memenuhi persyaratan jaringan iklan.</div>
+<div class="grid" id="cards"></div>
+</div>
+</section>
+
+<section id="tentang">
+<div class="wrap">
+<div class="section-head"><h2>Tentang DigitalPintar</h2><p>Belajar teknologi dengan bahasa yang mudah dipahami.</p></div>
+<div class="info-grid">
+<div class="info-card"><h3>🎯 Misi kami</h3><p>Membantu pembaca mempelajari keterampilan digital melalui tutorial yang praktis dan terstruktur.</p></div>
+<div class="info-card"><h3>📚 Materi praktis</h3><p>Setiap tutorial dirancang dengan penjelasan, contoh, dan latihan untuk dicoba sendiri.</p></div>
+<div class="info-card"><h3>✉️ Kontak</h3><p>Untuk pertanyaan atau koreksi materi, siapkan alamat email pengelola dan tambahkan di sini sebelum situs dipublikasikan.</p></div>
+</div>
+</div>
+</section>
+</main>
+
+<section class="article-view" id="articleView">
+<div class="wrap article">
+<button class="back" onclick="home()">← Kembali ke semua artikel</button>
+<div id="articleContent"></div>
+<div class="ad">RUANG IKLAN<br>Penempatan iklan tambahan</div>
+</div>
+</section>
+
+<footer>
+<div class="wrap foot">
+<div><strong>DigitalPintar.</strong><p>Belajar hari ini, berkembang setiap hari.</p></div>
+<div><a href="#tentang" onclick="home()">Tentang</a><a href="#privasi" onclick="privacy()">Kebijakan Privasi</a></div>
+</div>
+</footer>
+
+<script>
+const articles = [
+{
+id:1,cat:"Excel",icon:"📊",title:"Mengenal Excel: panduan pertama untuk pemula",desc:"Kenali sel, baris, kolom, lembar kerja, dan cara membuat tabel.",
+intro:"Microsoft Excel adalah aplikasi spreadsheet untuk mengatur, menghitung, dan menganalisis data. Kamu bisa memakainya untuk anggaran, nilai, stok barang, dan laporan.",
+body:`
+<h2>1. Kenali bagian dasar Excel</h2>
+<ul><li><b>Workbook:</b> satu file Excel.</li><li><b>Worksheet:</b> lembar kerja di dalam file.</li><li><b>Cell:</b> kotak tempat memasukkan data, misalnya A1.</li><li><b>Column:</b> kolom vertikal berlabel huruf.</li><li><b>Row:</b> baris horizontal berlabel angka.</li></ul>
+<h2>2. Buat tabel sederhana</h2><p>Masukkan judul di baris pertama, misalnya Nama, Barang, dan Harga. Isi data di baris berikutnya. Pilih data lalu gunakan fitur Format as Table untuk membuatnya lebih rapi.</p>
+<h2>3. Gunakan rumus pertama</h2><p>Rumus Excel biasanya diawali tanda sama dengan.</p><pre>=2+3
+=10*5
+=100/4</pre>
+<p>Tekan Enter untuk melihat hasilnya. Operator dasar adalah + untuk penjumlahan, - untuk pengurangan, * untuk perkalian, dan / untuk pembagian.</p>
+<h2>4. Tips penting</h2><ul><li>Gunakan nama kolom yang jelas.</li><li>Jangan mencampur angka dan teks dalam kolom yang sama tanpa alasan.</li><li>Simpan pekerjaan dengan Ctrl+S.</li></ul>
+<div class="example"><b>Contoh:</b> Jika harga barang ada di sel C2, kamu bisa menghitung pajak 10% dengan rumus <code>=C2*10%</code>.</div>`,
+exercise:"Buat tabel tiga barang dengan kolom Nama Barang, Harga, dan Jumlah. Tambahkan satu baris judul dan tiga baris data."
+},
+{
+id:2,cat:"Excel",icon:"🧮",title:"Rumus SUM, AVERAGE, MIN, dan MAX",desc:"Empat rumus dasar yang sering digunakan saat mengolah angka.",
+intro:"Fungsi Excel membantu menghitung data tanpa harus melakukan operasi satu per satu. Empat fungsi ini cocok dipelajari pertama kali.",
+body:`
+<h2>1. SUM — menjumlahkan angka</h2><pre>=SUM(B2:B6)</pre><p>Rumus tersebut menjumlahkan nilai dari sel B2 sampai B6.</p>
+<h2>2. AVERAGE — mencari rata-rata</h2><pre>=AVERAGE(B2:B6)</pre><p>Excel menghitung rata-rata angka dalam rentang tersebut.</p>
+<h2>3. MIN dan MAX</h2><pre>=MIN(B2:B6)
+=MAX(B2:B6)</pre><p>MIN mencari angka terkecil, sedangkan MAX mencari angka terbesar.</p>
+<h2>4. Contoh nilai siswa</h2><p>Misalnya B2 sampai B6 berisi 80, 90, 75, 85, dan 70. SUM menghasilkan 400, AVERAGE menghasilkan 80, MIN menghasilkan 70, dan MAX menghasilkan 90.</p>
+<h2>5. Kesalahan umum</h2><ul><li>Pastikan rentang sel benar.</li><li>Gunakan titik dua untuk rentang, misalnya B2:B6.</li><li>Jika rumus tidak bekerja, periksa apakah angka tersimpan sebagai teks.</li></ul>`,
+exercise:"Jika C2:C5 berisi 12, 18, 20, dan 10, tentukan rumus untuk mencari jumlah, rata-rata, angka terkecil, dan angka terbesar."
+},
+{
+id:3,cat:"Excel",icon:"🔎",title:"Memahami IF dan SUMIF",desc:"Buat keputusan otomatis dan jumlahkan data berdasarkan kriteria.",
+intro:"Fungsi IF memeriksa suatu kondisi. SUMIF menjumlahkan nilai yang memenuhi kriteria tertentu.",
+body:`
+<h2>1. Fungsi IF</h2><pre>=IF(B2>=75,"Lulus","Belum Lulus")</pre><p>Jika nilai di B2 minimal 75, hasilnya Lulus. Jika tidak, hasilnya Belum Lulus.</p>
+<h2>2. Bagian rumus IF</h2><ul><li><code>B2&gt;=75</code>: kondisi yang diuji.</li><li><code>"Lulus"</code>: hasil jika benar.</li><li><code>"Belum Lulus"</code>: hasil jika salah.</li></ul>
+<h2>3. Fungsi SUMIF</h2><pre>=SUMIF(A2:A10,"Makanan",B2:B10)</pre><p>Excel mencari kata Makanan di A2:A10, lalu menjumlahkan nilai yang sesuai di B2:B10.</p>
+<h2>4. Contoh penggunaan</h2><p>Gunakan IF untuk menentukan status kelulusan atau target penjualan. Gunakan SUMIF untuk menjumlahkan penjualan berdasarkan kategori produk.</p>
+<div class="example"><b>Catatan:</b> Beberapa pengaturan bahasa Excel menggunakan titik koma (;) sebagai pemisah argumen, bukan koma (,).</div>`,
+exercise:"Buat rumus IF yang menampilkan 'Tercapai' jika penjualan di B2 minimal 1000000, dan 'Belum' jika kurang."
+},
+{
+id:4,cat:"Excel",icon:"📈",title:"Membuat grafik dan laporan sederhana",desc:"Ubah tabel angka menjadi grafik yang mudah dibaca.",
+intro:"Grafik membantu pembaca memahami pola dan perbandingan data lebih cepat daripada melihat banyak angka.",
+body:`
+<h2>1. Siapkan data</h2><p>Buat tabel dengan dua kolom: Bulan dan Penjualan. Isi beberapa bulan beserta nilai penjualannya.</p>
+<h2>2. Pilih jenis grafik</h2><ul><li><b>Column/bar chart:</b> membandingkan nilai antar kategori.</li><li><b>Line chart:</b> melihat perubahan dari waktu ke waktu.</li><li><b>Pie chart:</b> menunjukkan bagian dari keseluruhan untuk kategori yang terbatas.</li></ul>
+<h2>3. Buat grafik</h2><ol><li>Blok data beserta judul kolom.</li><li>Buka menu Insert.</li><li>Pilih jenis grafik yang sesuai.</li><li>Tambahkan judul dan label yang jelas.</li></ol>
+<h2>4. Bikin laporan rapi</h2><p>Gunakan format angka yang konsisten, judul yang deskriptif, serta warna secukupnya. Hindari grafik 3D jika membuat perbandingan sulit dibaca.</p>
+<h2>5. Sebelum dibagikan</h2><p>Periksa sumber data, satuan, periode, dan apakah grafik menampilkan semua kategori yang relevan.</p>`,
+exercise:"Buat grafik penjualan untuk empat bulan. Pilih grafik yang paling tepat untuk menunjukkan tren, lalu tulis alasan pilihanmu."
+},
+{
+id:5,cat:"Coding",icon:"🌐",title:"HTML dasar: membangun halaman web",desc:"Pahami struktur HTML dan buat halaman web pertamamu.",
+intro:"HTML adalah bahasa markup untuk menyusun isi halaman web, seperti judul, paragraf, gambar, tautan, dan daftar.",
+body:`
+<h2>1. Struktur HTML minimal</h2><pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="id"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport"
+    content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Halaman Pertamaku&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Halo, dunia!&lt;/h1&gt;
+  &lt;p&gt;Ini website pertamaku.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<h2>2. Fungsi tag umum</h2><ul><li><code>h1</code>: judul utama.</li><li><code>p</code>: paragraf.</li><li><code>a</code>: tautan.</li><li><code>img</code>: gambar.</li><li><code>ul</code> dan <code>li</code>: daftar.</li></ul>
+<h2>3. Cara mencoba</h2><ol><li>Buka editor teks seperti VS Code.</li><li>Buat file bernama <code>index.html</code>.</li><li>Tempel struktur HTML di atas.</li><li>Simpan lalu buka file di browser.</li></ol>
+<h2>4. HTML bukan bahasa pemrograman</h2><p>HTML menyusun struktur konten. CSS mengatur tampilan, sedangkan JavaScript menambahkan interaksi.</p>`,
+exercise:"Buat halaman berisi satu judul nama, dua paragraf tentang hobimu, dan tautan menuju situs yang kamu sukai."
+},
+{
+id:6,cat:"Coding",icon:"🎨",title:"CSS dasar: membuat website lebih menarik",desc:"Atur warna, jarak, ukuran teks, dan tata letak halaman.",
+intro:"CSS atau Cascading Style Sheets mengatur bagaimana elemen HTML terlihat. Kamu bisa mengubah warna, tipografi, jarak, dan tata letak.",
+body:`
+<h2>1. Tambahkan CSS</h2><pre>&lt;style&gt;
+body {
+  font-family: Arial, sans-serif;
+  background: #f1f5f9;
+  color: #172554;
+  margin: 0;
+}
+h1 { color: #2563eb; }
+p { line-height: 1.7; }
+&lt;/style&gt;</pre>
+<h2>2. Memahami aturan CSS</h2><p>Selector memilih elemen yang akan diubah. Property menentukan aspek tampilan, sementara value adalah nilai yang digunakan.</p><pre>h1 {
+  color: blue;
+  font-size: 32px;
+}</pre>
+<h2>3. Model kotak</h2><p>Setiap elemen dapat memiliki content, padding, border, dan margin. Padding memberi ruang di dalam border; margin memberi ruang di luar elemen.</p>
+<h2>4. Tata letak responsif</h2><pre>.container {
+  display: grid;
+  grid-template-columns:
+    repeat(3, 1fr);
+  gap: 16px;
+}
+@media (max-width: 600px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}</pre>
+<p>Media query membantu tampilan menyesuaikan layar kecil seperti ponsel.</p>`,
+exercise:"Buat kartu profil sederhana dengan latar putih, sudut membulat, judul biru, dan jarak dalam 20 piksel."
+},
+{
+id:7,cat:"Coding",icon:"⚙️",title:"JavaScript untuk interaksi website",desc:"Pelajari variabel, fungsi, kondisi, dan event sederhana.",
+intro:"JavaScript membuat halaman web bisa bereaksi terhadap tindakan pengguna, misalnya klik tombol, memeriksa formulir, atau memperbarui teks.",
+body:`
+<h2>1. Variabel</h2><pre>const nama = "Dina";
+let skor = 10;
+skor = skor + 5;</pre><p>Gunakan const untuk variabel yang tidak akan ditetapkan ulang dan let untuk nilai yang mungkin berubah.</p>
+<h2>2. Kondisi</h2><pre>const nilai = 80;
+if (nilai >= 75) {
+  console.log("Lulus");
+} else {
+  console.log("Belum lulus");
+}</pre>
+<h2>3. Fungsi</h2><pre>function sapa(nama) {
+  return "Halo, " + nama;
+}
+console.log(sapa("Dina"));</pre>
+<h2>4. Event klik</h2><pre>&lt;button id="tombol"&gt;Klik saya&lt;/button&gt;
+&lt;p id="hasil"&gt;&lt;/p&gt;
+&lt;script&gt;
+document.querySelector("#tombol")
+  .addEventListener("click", () =&gt; {
+    document.querySelector("#hasil")
+      .textContent = "Tombol diklik!";
+  });
+&lt;/script&gt;</pre>
+<p>Event listener menjalankan fungsi saat peristiwa tertentu terjadi.</p>`,
+exercise:"Buat tombol yang mengubah teks paragraf menjadi 'Saya sedang belajar JavaScript!' saat ditekan."
+},
+{
+id:8,cat:"Coding",icon:"🚀",title:"Mempublikasikan website gratis dengan GitHub Pages",desc:"Pelajari cara menampilkan file HTML secara online.",
+intro:"GitHub Pages dapat menyajikan situs statis dari repository GitHub. Cocok untuk website portofolio, profil, dan proyek belajar.",
+body:`
+<h2>1. Siapkan repository</h2><p>Buat repository publik dan unggah file HTML, CSS, serta JavaScript yang dibutuhkan.</p>
+<h2>2. Pastikan file utama</h2><p>Untuk halaman utama, biasanya gunakan nama <code>index.html</code> di folder root repository.</p>
+<h2>3. Aktifkan Pages</h2><ol><li>Buka repository di GitHub.</li><li>Pilih Settings.</li><li>Pilih Pages.</li><li>Pada Build and deployment, pilih Deploy from a branch.</li><li>Pilih branch utama, biasanya main, lalu folder /(root).</li><li>Klik Save.</li></ol>
+<h2>4. Tunggu publikasi</h2><p>Setelah proses selesai, alamat situs akan muncul di pengaturan Pages. Perubahan file bisa membutuhkan waktu sebelum terlihat di situs.</p>
+<h2>5. Tips mengatasi masalah</h2><ul><li>Periksa ejaan nama file.</li><li>Pastikan index.html ada di folder yang dipublikasikan.</li><li>Periksa tab Actions jika deployment gagal.</li><li>Hindari memasukkan kata sandi atau kunci API ke repository publik.</li></ul>`,
+exercise:"Buat halaman portofolio sederhana berisi nama panggilan, deskripsi singkat, dan dua proyek yang pernah kamu kerjakan."
+},
+{
+id:9,cat:"Produktivitas",icon:"⏱️",title:"Mengatur waktu dengan prioritas harian",desc:"Susun pekerjaan berdasarkan kepentingan dan tenggat waktu.",
+intro:"Produktivitas bukan berarti sibuk sepanjang hari. Tujuannya menyelesaikan pekerjaan penting dengan cara yang lebih teratur.",
+body:`
+<h2>1. Tulis semua tugas</h2><p>Mulai dengan mencatat tugas sekolah, pekerjaan, urusan rumah, dan kegiatan pribadi. Jangan hanya mengandalkan ingatan.</p>
+<h2>2. Tentukan prioritas</h2><ul><li>Penting dan mendesak: kerjakan terlebih dahulu.</li><li>Penting tetapi belum mendesak: jadwalkan.</li><li>Mendesak tetapi kurang penting: sederhanakan atau minta bantuan jika memungkinkan.</li><li>Tidak penting dan tidak mendesak: kurangi jika mengganggu.</li></ul>
+<h2>3. Pecah tugas besar</h2><p>Daripada menulis 'buat website', pecah menjadi membuat struktur HTML, menata CSS, menambahkan konten, lalu menguji tampilan.</p>
+<h2>4. Gunakan blok waktu</h2><p>Alokasikan waktu fokus untuk satu tugas, lalu istirahat singkat. Sesuaikan durasinya dengan kebutuhan dan tingkat konsentrasi.</p>
+<h2>5. Evaluasi</h2><p>Di akhir hari, periksa apa yang selesai dan tentukan prioritas untuk besok. Jangan membuat daftar yang terlalu panjang.</p>`,
+exercise:"Tulis tiga tugas untuk besok. Beri prioritas, tentukan perkiraan durasi, dan jadwalkan waktu pengerjaannya."
+},
+{
+id:10,cat:"Produktivitas",icon:"📁",title:"Manajemen file agar laptop tetap rapi",desc:"Atur folder, nama file, dan cadangan dokumen dengan konsisten.",
+intro:"Struktur file yang rapi memudahkan pencarian dokumen dan mengurangi risiko kehilangan pekerjaan.",
+body:`
+<h2>1. Buat struktur folder</h2><pre>Dokumen/
+  Belajar/
+    Excel/
+    Coding/
+  Pekerjaan/
+  Keuangan/
+  Arsip/</pre>
+<p>Gunakan kategori yang sesuai dengan aktivitasmu. Jangan membuat terlalu banyak folder kecil tanpa kebutuhan.</p>
+<h2>2. Gunakan nama yang jelas</h2><p>Nama seperti <code>Laporan_Penjualan_Oktober.xlsx</code> lebih informatif daripada <code>filebaru2_final_fix.xlsx</code>.</p>
+<h2>3. Tambahkan tanggal bila perlu</h2><p>Format tahun-bulan-tanggal, seperti <code>2026-10-19_Laporan.xlsx</code>, memudahkan pengurutan file berdasarkan waktu.</p>
+<h2>4. Hindari duplikasi</h2><p>Tentukan satu lokasi untuk file utama. Gunakan folder Arsip untuk dokumen lama yang masih diperlukan.</p>
+<h2>5. Buat cadangan</h2><p>Simpan salinan dokumen penting di media atau layanan cadangan yang aman. Aktifkan verifikasi dua langkah untuk akun penyimpanan online.</p>`,
+exercise:"Susun struktur folder untuk belajar, dokumen pribadi, dan proyek. Buat tiga contoh nama file yang jelas."
+},
+{
+id:11,cat:"Produktivitas",icon:"📋",title:"Menggunakan Google Sheets untuk kolaborasi",desc:"Kerjakan tabel bersama dan bagikan dokumen dengan lebih teratur.",
+intro:"Google Sheets adalah aplikasi spreadsheet berbasis web yang memungkinkan beberapa orang bekerja pada dokumen yang sama.",
+body:`
+<h2>1. Buat spreadsheet</h2><p>Buka Google Sheets, buat spreadsheet baru, lalu berikan judul yang jelas. Susun kolom sesuai informasi yang ingin dicatat.</p>
+<h2>2. Gunakan rumus</h2><pre>=SUM(B2:B10)
+=AVERAGE(B2:B10)
+=COUNT(A2:A10)</pre><p>Fungsi dasar seperti di Excel juga tersedia di Google Sheets.</p>
+<h2>3. Bagikan dengan aman</h2><p>Klik tombol Bagikan. Masukkan alamat orang yang perlu mengakses dokumen dan pilih izin Viewer, Commenter, atau Editor sesuai kebutuhan.</p>
+<h2>4. Kolaborasi efektif</h2><ul><li>Gunakan header yang jelas.</li><li>Jangan mengubah struktur utama tanpa memberi tahu anggota tim.</li><li>Gunakan komentar untuk pertanyaan.</li><li>Periksa riwayat versi jika perlu mengetahui perubahan.</li></ul>
+<h2>5. Jaga privasi</h2><p>Jangan mengatur dokumen sensitif menjadi dapat diakses siapa saja melalui tautan. Periksa izin sebelum membagikan.</p>`,
+exercise:"Buat spreadsheet tugas kelompok dengan kolom Tugas, Penanggung Jawab, Tenggat, dan Status."
+},
+{
+id:12,cat:"Produktivitas",icon:"⌨️",title:"Shortcut keyboard yang menghemat waktu",desc:"Pelajari kombinasi tombol praktis untuk aktivitas harian.",
+intro:"Shortcut keyboard membantu menjalankan perintah umum tanpa perlu mencari tombol melalui menu.",
+body:`
+<h2>1. Shortcut dasar Windows</h2><ul><li><b>Ctrl + C:</b> salin.</li><li><b>Ctrl + X:</b> potong.</li><li><b>Ctrl + V:</b> tempel.</li><li><b>Ctrl + Z:</b> urungkan.</li><li><b>Ctrl + S:</b> simpan.</li><li><b>Ctrl + F:</b> cari.</li><li><b>Alt + Tab:</b> berpindah aplikasi.</li><li><b>Win + E:</b> buka File Explorer.</li><li><b>Win + Shift + S:</b> pilih area tangkapan layar.</li></ul>
+<h2>2. Shortcut browser</h2><ul><li><b>Ctrl + T:</b> tab baru.</li><li><b>Ctrl + W:</b> tutup tab aktif.</li><li><b>Ctrl + Shift + T:</b> buka kembali tab yang ditutup.</li><li><b>Ctrl + L:</b> pilih bilah alamat.</li></ul>
+<h2>3. Biasakan bertahap</h2><p>Pilih tiga shortcut yang paling sering kamu gunakan. Latih selama beberapa hari sebelum menambah kombinasi lain.</p>
+<h2>4. Perhatikan aplikasi</h2><p>Beberapa shortcut berbeda antar aplikasi atau sistem operasi. Periksa menu aplikasi jika kombinasi tertentu tidak bekerja.</p>`,
+exercise:"Pilih lima shortcut yang paling berguna untuk kegiatanmu. Praktikkan setiap shortcut setidaknya tiga kali."
+}
+];
+
+let activeCategory="Semua";
+function render(){
+ const q=document.getElementById("search").value.trim().toLowerCase();
+ const filtered=articles.filter(a=>(activeCategory==="Semua"||a.cat===activeCategory)&&(`${a.title} ${a.desc} ${a.cat} ${a.intro}`).toLowerCase().includes(q));
+ document.getElementById("cards").innerHTML=filtered.length?filtered.map(a=>`
+ <article class="card">
+ <div class="card-top">${a.icon}</div>
+ <div class="card-body">
+ <span class="tag">${a.cat}</span>
+ <h3>${a.title}</h3>
+ <p>${a.desc}</p>
+ <button class="read" onclick="openArticle(${a.id})">Baca tutorial →</button>
+ </div></article>`).join(""):`<div class="empty">Artikel tidak ditemukan. Coba kata kunci lain.</div>`;
+}
+function setCategory(cat,btn){
+ activeCategory=cat;
+ document.querySelectorAll(".chip").forEach(b=>b.classList.toggle("active",b.textContent.trim()===(cat==="Semua"?"Semua":cat)));
+ render();
+}
+function openArticle(id){
+ const a=articles.find(x=>x.id===id);
+ if(!a)return;
+ document.getElementById("home").style.display="none";
+ document.getElementById("articleView").style.display="block";
+ document.getElementById("articleContent").innerHTML=`
+ <span class="tag">${a.cat} · Tutorial ${String(a.id).padStart(2,"0")}</span>
+ <h1>${a.title}</h1><p class="intro">${a.intro}</p>
+ ${a.body}
+ <div class="exercise"><details><summary>📝 Latihan mandiri</summary><p>${a.exercise}</p><p><b>Tips:</b> Coba kerjakan sendiri dahulu, lalu periksa kembali hasilnya.</p></details></div>`;
+ window.scrollTo(0,0);
+}
+function home(){
+ document.getElementById("articleView").style.display="none";
+ document.getElementById("home").style.display="block";
+}
+function privacy(){
+ home();
+ alert("Kebijakan Privasi: Situs ini merupakan proyek edukasi. Jika menambahkan analitik, formulir, atau iklan pihak ketiga, jelaskan data yang dikumpulkan, tujuan penggunaannya, dan cara pengguna mengelola data. Buat halaman kebijakan privasi lengkap sebelum mengaktifkan layanan iklan.");
+}
+document.getElementById("search").addEventListener("input",render);
+render();
+</script>
+</body>
+</html>
