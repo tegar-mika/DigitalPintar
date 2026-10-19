@@ -1,0 +1,345 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>DigitalPintar - Belajar Teknologi dengan Mudah</title>
+  <meta name="description" content="Panduan praktis belajar Excel, coding, dan teknologi digital untuk pemula.">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: #252525;
+      background: #fff;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1050px;
+      margin: auto;
+    }
+
+    header {
+      border-bottom: 1px solid #eee;
+      background: white;
+    }
+
+    nav {
+      min-height: 70px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      letter-spacing: -1px;
+    }
+
+    .logo span { color: #777; }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      list-style: none;
+      color: #666;
+      font-size: 14px;
+    }
+
+    .hero {
+      background: #f6f6f6;
+      padding: 65px 0;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.2;
+      letter-spacing: -1.5px;
+      max-width: 700px;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      color: #666;
+      max-width: 600px;
+    }
+
+    .section {
+      padding: 48px 0;
+    }
+
+    .section h2 {
+      font-size: 27px;
+      margin-bottom: 8px;
+    }
+
+    .muted {
+      color: #777;
+      margin-bottom: 25px;
+    }
+
+    .categories {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .category {
+      padding: 8px 15px;
+      border: 1px solid #ddd;
+      border-radius: 25px;
+      font-size: 14px;
+    }
+
+    .articles {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .article {
+      border: 1px solid #e9e9e9;
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .article .tag {
+      color: #777;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .article h3 {
+      font-size: 21px;
+      line-height: 1.4;
+      margin: 10px 0;
+    }
+
+    .article p {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .read-more {
+      display: inline-block;
+      font-weight: bold;
+      font-size: 14px;
+      border-bottom: 1px solid #222;
+    }
+
+    /* Area iklan: hanya placeholder, belum menampilkan iklan asli */
+    .ad-slot {
+      border: 1px dashed #c8c8c8;
+      background: #fafafa;
+      min-height: 110px;
+      margin: 25px 0;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #888;
+      font-size: 13px;
+    }
+
+    .ad-slot strong {
+      color: #666;
+      font-weight: normal;
+    }
+
+    .about {
+      background: #f6f6f6;
+    }
+
+    .about p {
+      color: #666;
+      max-width: 700px;
+    }
+
+    footer {
+      padding: 25px 0;
+      color: #888;
+      font-size: 13px;
+      border-top: 1px solid #eee;
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    @media (max-width: 650px) {
+      nav {
+        padding: 15px 0;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .articles {
+        grid-template-columns: 1fr;
+      }
+
+      .hero { padding: 48px 0; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="container">
+      <a class="logo" href="#">Digital<span>Pintar.</span></a>
+
+      <ul class="nav-links">
+        <li><a href="#beranda">Beranda</a></li>
+        <li><a href="#artikel">Artikel</a></li>
+        <li><a href="#kategori">Kategori</a></li>
+        <li><a href="#tentang">Tentang</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="beranda">
+      <div class="container">
+        <h1>Belajar teknologi, mulai dari hal sederhana.</h1>
+        <p>
+          Panduan praktis untuk pemula yang ingin belajar Excel,
+          coding, dan keterampilan digital dengan langkah yang mudah dipahami.
+        </p>
+      </div>
+    </section>
+
+    <section class="section container" id="kategori">
+      <h2>Jelajahi Kategori</h2>
+      <p class="muted">Pilih topik yang ingin kamu pelajari.</p>
+
+      <div class="categories">
+        <a class="category" href="#artikel">Excel</a>
+        <a class="category" href="#artikel">Coding</a>
+        <a class="category" href="#artikel">Teknologi</a>
+        <a class="category" href="#artikel">Produktivitas</a>
+      </div>
+    </section>
+
+    <section class="container" aria-label="Area iklan">
+      <div class="ad-slot">
+        <strong>Area iklan</strong>
+        <span>Iklan akan ditampilkan di sini setelah AdSense disetujui.</span>
+      </div>
+    </section>
+
+    <section class="section container" id="artikel">
+      <h2>Artikel Pilihan</h2>
+      <p class="muted">
+        Artikel contoh. Kembangkan menjadi panduan orisinal yang bermanfaat.
+      </p>
+
+      <div class="articles">
+        <article class="article">
+          <span class="tag">Excel untuk pemula</span>
+          <h3>Belajar Rumus SUM di Excel</h3>
+          <p>
+            Pelajari cara menjumlahkan angka menggunakan SUM,
+            lengkap dengan contoh tabel dan latihan sederhana.
+          </p>
+          <a class="read-more" href="#panduan-excel">Baca panduan</a>
+        </article>
+
+        <article class="article">
+          <span class="tag">Belajar coding</span>
+          <h3>Membuat Website Pertama dengan HTML</h3>
+          <p>
+            Kenali struktur HTML dan cara membuat halaman website
+            sederhana dari laptop Windows.
+          </p>
+          <a class="read-more" href="#panduan-html">Baca panduan</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="container" aria-label="Area iklan">
+      <div class="ad-slot">
+        <strong>Area iklan</strong>
+        <span>Slot iklan kedua — belum terhubung ke AdSense.</span>
+      </div>
+    </section>
+
+    <section class="section container" id="panduan-excel">
+      <h2>Panduan singkat: SUM di Excel</h2>
+      <p>
+        Rumus SUM digunakan untuk menjumlahkan beberapa angka.
+        Misalnya, jika angka berada pada sel A1 sampai A5,
+        ketik rumus berikut pada sel kosong:
+      </p>
+      <p style="margin: 15px 0; padding: 15px; background: #f5f5f5;">
+        <code>=SUM(A1:A5)</code>
+      </p>
+      <p>
+        Tekan Enter untuk melihat hasilnya. Cobalah dengan data latihan
+        sendiri agar kamu memahami cara kerjanya.
+      </p>
+    </section>
+
+    <section class="section container" id="panduan-html">
+      <h2>Panduan singkat: HTML</h2>
+      <p>
+        HTML digunakan untuk menyusun isi halaman website.
+        Tag seperti &lt;h1&gt; membuat judul, sedangkan
+        &lt;p&gt; membuat paragraf. Kamu bisa mencoba mengubah
+        teks pada file index.html menggunakan VS Code.
+      </p>
+    </section>
+
+    <section class="section about" id="tentang">
+      <div class="container">
+        <h2>Tentang DigitalPintar</h2>
+        <p>
+          DigitalPintar adalah proyek belajar yang berfokus pada
+          panduan teknologi praktis untuk pemula. Kami ingin membantu
+          pembaca memahami keterampilan digital melalui contoh,
+          penjelasan, dan latihan yang bisa dicoba sendiri.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <span>© <span id="year"></span> DigitalPintar</span>
+      <span>Belajar sedikit demi sedikit, setiap hari.</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+</body>
+</html>
